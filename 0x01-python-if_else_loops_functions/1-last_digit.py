@@ -15,4 +15,4 @@ elif last_digit < 6 and last_digit != 0:
 else:
     context = "and is 0"
 
-print(f"Last digit of {number} is {last_digit} {context}")
+print(f"Last digit of" + " " + str(number) +" is " + str(last_digit) + f" {context}")
