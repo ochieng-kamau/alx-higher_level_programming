@@ -71,3 +71,41 @@ void free_listint(listint_t *head)
 		free(current);
 	}
 }
+
+/**
+ * insert_node - function that inserts node at given index
+ * @idx: index of the list
+ * @n: interger for the new node
+ * Return: if the function fails - NULL else new node
+ */
+listint_t *insert_node(listint_t **head, unsigned int idx, int n)
+{
+	listint_t *new, *cpy = *head;
+	unsigned int node;
+
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+
+	new->n = n;
+
+	if (idx == 0)
+	{
+		new->next = cpy;
+		*head = new;
+		return (new);
+	}
+
+	for (node = 0; node < (idx - 1); node++)
+	{
+		if (cpy == NULL || cpy->next == NULL)
+			return (NULL);
+
+		cpy = cpy->next;
+	}
+
+	new->next = cpy->next;
+	cpy->next = new;
+
+	return (new);
+}
